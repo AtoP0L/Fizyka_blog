@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prosty blog o fizyce</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Prosty styl wbudowany (bez osobnych plików) -->
+  <style>
+    :root {
+      --bg: #0f172a;         /* tło */
+      --card: #111827;      /* tło kart */
+      --text: #e5e7eb;      /* tekst */
+      --muted: #9ca3af;     /* tekst pomocniczy */
+      --accent: #38bdf8;    /* akcent */
+      --link: #93c5fd;      /* linki */
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid #1f2937;
+      background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #0b1220 100%);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand .logo {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 30%, #38bdf8, #1d4ed8 60%, #0b1220 100%);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    nav {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      background: #0b1220;
+      border: 1px solid #1f2937;
+    }
+    nav a.active {
+      border-color: #2563eb;
+      color: #bfdbfe;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25) inset;
+    }
+
+    .hero {
+      margin: 1.25rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      background:
+        radial-gradient(1200px 200px at 10% 0%, rgba(56, 189, 248, 0.08), transparent 40%),
+        radial-gradient(1200px 200px at 90% 0%, rgba(147, 197, 253, 0.08), transparent 40%),
+        #0b1220;
+      border: 1px solid #1f2937;
+    }
+    .hero h2 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.35rem;
+    }
+    .hero p { margin: 0; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 700px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    article {
+      padding: 1rem;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid #1f2937;
+    }
+    article h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.15rem;
+    }
+    .meta {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .read-more {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #1f2937;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <!-- Ten kwadrat to tymczasowe logo w nagłówku; favicon jest ustawiona w <head> -->
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Fizyka, prosto i klarownie</h1>
+          <p>Notatki, ciekawostki i intuicje — bez nadmiaru wzorów.</p>
+        </div>
+      </div>
+      <nav aria-label="Nawigacja">
+        <a href="#" class="active">Strona główna</a>
+        <a href="#mechanika">Mechanika</a>
+        <a href="#elektromagnetyzm">Elektromagnetyzm</a>
+        <a href="#termodynamika">Termodynamika</a>
+        <a href="#astro">Astrofizyka</a>
+        <a href="#o-mnie">O mnie</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" role="region" aria-label="Wprowadzenie">
+      <h2>Witaj na prostym blogu o fizyce</h2>
+      <p>Znajdziesz tu krótkie wpisy tłumaczące zjawiska codzienne i te kosmiczne, w języku możliwie ludzkim.</p>
+    </section>
+
+    <section id="mechanika">
+      <h2>Mechanika</h2>
+      <div class="grid">
+        <article>
+          <h3>Dlaczego jabłko spada? Intuicja grawitacji</h3>
+          <p class="meta">Opublikowano: 09.12.2025 • Czas czytania: 3 min</p>
+          <p>Grawitacja to po prostu przyciąganie wynikające z masy. Im większa masa, tym silniejsze ściąganie. Ziemia ma jej sporo, więc rzeczy w pobliżu spadają w jej stronę.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+        <article>
+          <h3>Bezwładność: dlaczego trudno nagle zatrzymać rower</h3>
+          <p class="meta">Opublikowano: 05.12.2025 • Czas czytania: 2 min</p>
+          <p>Obiekt w ruchu lub spoczynku „lubi” pozostać w tym stanie. To bezwładność. Im większa masa, tym większa upartość obiektu, by nie zmieniać prędkości.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="elektromagnetyzm">
+      <h2>Elektromagnetyzm</h2>
+      <div class="grid">
+        <article>
+          <h3>Magnes i prąd: dwa oblicza tej samej siły</h3>
+          <p class="meta">Opublikowano: 01.12.2025 • Czas czytania: 4 min</p>
+          <p>Prąd w przewodniku tworzy pole magnetyczne, a zmienne pole potrafi wzbudzić prąd. To sprzężenie napędza silniki i generatory.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+        <article>
+          <h3>Dlaczego światło to fala i cząstka</h3>
+          <p class="meta">Opublikowano: 28.11.2025 • Czas czytania: 5 min</p>
+          <p>Światło czasem rozchodzi się jak fala, a czasem zderza się jak cząstka. Opis falowy i „fotony” to dwa języki jednego zjawiska.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="termodynamika">
+      <h2>Termodynamika</h2>
+      <div class="grid">
+        <article>
+          <h3>Ciepło, temperatura i dlaczego metal jest „zimny”</h3>
+          <p class="meta">Opublikowano: 20.11.2025 • Czas czytania: 3 min</p>
+          <p>Metal szybciej odbiera ciepło z dłoni niż drewno, bo lepiej przewodzi. Nie musi mieć niższej temperatury, by wydawać się chłodniejszy.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+        <article>
+          <h3>Entropia: porządek, który lubi się rozmywać</h3>
+          <p class="meta">Opublikowano: 15.11.2025 • Czas czytania: 4 min</p>
+          <p>Entropia mierzy nieporządek. Naturalne procesy prowadzą do stanów bardziej prawdopodobnych — stąd rozpad porządku z czasem.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="astro">
+      <h2>Astrofizyka</h2>
+      <div class="grid">
+        <article>
+          <h3>Czarna dziura: granica, z której nie ma powrotu</h3>
+          <p class="meta">Opublikowano: 10.11.2025 • Czas czytania: 5 min</p>
+          <p>Horyzont zdarzeń to miejsce, gdzie ucieczka wymagałaby większej prędkości niż światło. Tam geometria czasu i przestrzeni robi się ekstremalna.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+        <article>
+          <h3>Dlaczego niebo jest ciemne w nocy?</h3>
+          <p class="meta">Opublikowano: 08.11.2025 • Czas czytania: 3 min</p>
+          <p>Wszechświat nie jest nieskończenie stary i gwiazdy są od nas daleko. Światło wielu z nich nie zdążyło do nas dotrzeć.</p>
+          <a class="read-more" href="#">Czytaj dalej →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="o-mnie">
+      <h2>O mnie</h2>
+      <article>
+        <p>Ten blog powstał z potrzeby mówienia o fizyce po ludzku: krótko, obrazowo i bez lęku przed pytaniami. Jeśli masz pomysł na wpis — daj znać!</p>
+      </article>
+    </section>
+
+    <div class="footer">
+      <p>&copy; 2025 • Prosty blog o fizyce • Wszelkie prawa zastrzeżone.</p>
+      <p>Kontakt: <a href="mailto:kontakt@przyklad.pl">kontakt@przyklad.pl</a></p>
+    </div>
+  </main>
+</body>
+</html>
